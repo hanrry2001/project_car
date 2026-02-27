@@ -1,4 +1,6 @@
-export const dashboardStats = [
+import { StatsCardProps } from '../pages/home/components/StatsCard';
+
+export const dashboardStats: Omit<StatsCardProps, 'alert'>[] = [
   {
     title: 'Tổng Doanh Thu',
     value: '285.000.000đ',
@@ -20,7 +22,7 @@ export const dashboardStats = [
     value: '6',
     icon: 'ri-car-line',
     subtitle: '2 xe đang thuê',
-    color: 'green'
+    color: 'emerald'
   },
   {
     title: 'Công Nợ',
@@ -28,7 +30,7 @@ export const dashboardStats = [
     icon: 'ri-alert-line',
     trend: '-5.3%',
     trendUp: false,
-    color: 'orange'
+    color: 'amber'
   }
 ];
 

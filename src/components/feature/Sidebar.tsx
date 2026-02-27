@@ -15,26 +15,26 @@ export default function Sidebar() {
 
   const menuItems: MenuItem[] = [
     { path: '/', label: 'Trang Chủ', icon: 'ri-dashboard-line' },
-    { 
-      path: '/vehicle-management', 
-      label: 'Quản Lý Xe', 
+    {
+      path: '/vehicle-management',
+      label: 'Quản Lý Xe',
       icon: 'ri-car-line',
       children: [
         { path: '/documents-alerts', label: 'Giấy Tờ & Cảnh Báo', icon: 'ri-file-list-3-line' }
       ]
     },
-    { 
-      path: '/driver-management', 
-      label: 'Quản Lý Tài Xế', 
+    {
+      path: '/driver-management',
+      label: 'Quản Lý Tài Xế',
       icon: 'ri-user-line',
       children: [
         { path: '/incidents', label: 'Vi Phạm & Sự Cố', icon: 'ri-alert-line' }
       ]
     },
     { path: '/operations', label: 'Vận Hành', icon: 'ri-tools-line' },
-    { 
-      path: '/finance', 
-      label: 'Tài Chính', 
+    {
+      path: '/finance',
+      label: 'Tài Chính',
       icon: 'ri-money-dollar-circle-line',
       children: [
         { path: '/finance/revenue', label: 'Quản Lý Doanh Thu', icon: 'ri-arrow-up-circle-line' },
@@ -63,7 +63,7 @@ export default function Sidebar() {
   }, [location.pathname]);
 
   const toggleExpand = (path: string) => {
-    setExpandedMenus(prev => 
+    setExpandedMenus(prev =>
       prev.includes(path) ? prev.filter(p => p !== path) : [...prev, path]
     );
   };
@@ -86,17 +86,17 @@ export default function Sidebar() {
           <div className="flex items-center justify-between p-6 border-b border-gray-200">
             {!isCollapsed && (
               <Link to="/" className="flex items-center gap-3">
-                <img 
-                  src="https://public.readdy.ai/ai/img_res/16aeefab-f462-4aa1-bc17-ab21f4c5fc24.png" 
+                <img
+                  src="https://public.readdy.ai/ai/img_res/16aeefab-f462-4aa1-bc17-ab21f4c5fc24.png"
                   alt="Logo"
                   className="h-10 w-auto"
                 />
-                <span className="text-lg font-semibold text-gray-900">Quản Lý Xe Điện</span>
+                <span className="text-lg font-semibold text-gray-900">Quản Lý Ca</span>
               </Link>
             )}
             {isCollapsed && (
-              <img 
-                src="https://public.readdy.ai/ai/img_res/16aeefab-f462-4aa1-bc17-ab21f4c5fc24.png" 
+              <img
+                src="https://public.readdy.ai/ai/img_res/16aeefab-f462-4aa1-bc17-ab21f4c5fc24.png"
                 alt="Logo"
                 className="h-10 w-auto mx-auto"
               />
@@ -112,11 +112,10 @@ export default function Sidebar() {
                     <div className="flex items-center">
                       <Link
                         to={item.path}
-                        className={`flex items-center gap-3 flex-1 px-6 py-3 transition-colors ${
-                          isParentActive(item)
+                        className={`flex items-center gap-3 flex-1 px-6 py-3 transition-colors ${isParentActive(item)
                             ? 'bg-teal-50 text-teal-600'
                             : 'text-gray-700 hover:bg-gray-50'
-                        } ${isActive(item.path) ? 'border-r-4 border-teal-600' : ''}`}
+                          } ${isActive(item.path) ? 'border-r-4 border-teal-600' : ''}`}
                       >
                         <i className={`${item.icon} text-xl w-6 h-6 flex items-center justify-center`}></i>
                         {!isCollapsed && <span className="text-sm font-medium whitespace-nowrap">{item.label}</span>}
@@ -138,11 +137,10 @@ export default function Sidebar() {
                           <Link
                             key={child.path}
                             to={child.path}
-                            className={`flex items-center gap-3 pl-12 pr-6 py-2.5 transition-colors ${
-                              isActive(child.path)
+                            className={`flex items-center gap-3 pl-12 pr-6 py-2.5 transition-colors ${isActive(child.path)
                                 ? 'bg-teal-50 text-teal-600 border-r-4 border-teal-600'
                                 : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700'
-                            }`}
+                              }`}
                           >
                             <i className={`${child.icon} text-base w-5 h-5 flex items-center justify-center`}></i>
                             <span className="text-sm font-medium whitespace-nowrap">{child.label}</span>
@@ -154,11 +152,10 @@ export default function Sidebar() {
                 ) : (
                   <Link
                     to={item.path}
-                    className={`flex items-center gap-3 px-6 py-3 transition-colors ${
-                      isActive(item.path)
+                    className={`flex items-center gap-3 px-6 py-3 transition-colors ${isActive(item.path)
                         ? 'bg-teal-50 text-teal-600 border-r-4 border-teal-600'
                         : 'text-gray-700 hover:bg-gray-50'
-                    }`}
+                      }`}
                   >
                     <i className={`${item.icon} text-xl w-6 h-6 flex items-center justify-center`}></i>
                     {!isCollapsed && <span className="text-sm font-medium whitespace-nowrap">{item.label}</span>}

@@ -1,11 +1,13 @@
 interface StatsCardProps {
   title: string;
   value: string;
-  unit: string;
+  unit?: string;
   icon: string;
   color: 'teal' | 'emerald' | 'cyan' | 'blue' | 'amber' | 'rose';
   trend?: string;
+  trendUp?: boolean;
   alert?: boolean;
+  subtitle?: string;
 }
 
 const colorClasses = {
@@ -17,7 +19,9 @@ const colorClasses = {
   rose: 'bg-rose-50 text-rose-600'
 };
 
-export default function StatsCard({ title, value, unit, icon, color, trend, alert }: StatsCardProps) {
+export default function StatsCard({ title, value, unit, icon, color, trend, trendUp, alert, subtitle }: StatsCardProps) {
+  const isTrendDown = trendUp === false;
+
   return (
     <div className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-shadow">
       <div className="flex items-start justify-between mb-4">
@@ -30,18 +34,24 @@ export default function StatsCard({ title, value, unit, icon, color, trend, aler
           </span>
         )}
       </div>
-      
+
       <h3 className="text-sm font-medium text-gray-600 mb-2">{title}</h3>
-      
+
       <div className="flex items-baseline gap-2">
         <span className="text-3xl font-bold text-gray-900">{value}</span>
-        <span className="text-sm text-gray-500">{unit}</span>
+        {unit && <span className="text-sm text-gray-500">{unit}</span>}
       </div>
-      
+
+      {subtitle && (
+        <div className="mt-3">
+          <span className="text-sm text-gray-500">{subtitle}</span>
+        </div>
+      )}
+
       {trend && (
         <div className="mt-3 flex items-center gap-1">
-          <i className="ri-arrow-up-line text-sm text-emerald-600"></i>
-          <span className="text-sm font-medium text-emerald-600">{trend}</span>
+          <i className={`ri-arrow-${isTrendDown ? 'down' : 'up'}-line text-sm ${isTrendDown ? 'text-rose-600' : 'text-emerald-600'}`}></i>
+          <span className={`text-sm font-medium ${isTrendDown ? 'text-rose-600' : 'text-emerald-600'}`}>{trend}</span>
           <span className="text-xs text-gray-500 ml-1">so với tháng trước</span>
         </div>
       )}
